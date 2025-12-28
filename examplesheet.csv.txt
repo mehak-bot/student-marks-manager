@@ -1,0 +1,5 @@
+Student Name,Subject,Marks
+Riya,Math,85
+Riya,Science,90
+Amit,Math,70
+

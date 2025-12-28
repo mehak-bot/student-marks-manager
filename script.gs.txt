@@ -1,0 +1,19 @@
+function calculateAverage() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return;
+
+  var data = sheet.getRange(2, 1, lastRow-1, 3).getValues();
+  var total = {}, count = {};
+
+  data.forEach(r => {
+    total[r[0]] = (total[r[0]] || 0) + r[2];
+    count[r[0]] = (count[r[0]] || 0) + 1;
+  });
+
+  let row = 2;
+  data.forEach(r => {
+    sheet.getRange(row, 4).setValue(total[r[0]] / count[r[0]]);
+    row++;
+  });
+}
